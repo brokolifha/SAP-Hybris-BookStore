@@ -1,0 +1,11 @@
+UPDATE GenericItem[processor = de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor]; pk[unique = true]
+
+
+INSERT_UPDATE ServicelayerJob; code[unique = true]; springId; OldBookRemoveJobPerfomable; OldBookRemoveJobPerfomable
+
+INSERT_UPDATE RemoveOldBookCj; code[unique = true]        ; job(code)[unique = true]   ; sessionLanguage(isocode); sessionCurrency(isocode); logtofile
+                             ; OldBookRemoveJobPerfomable ; OldBookRemoveJobPerfomable ; en                      ; USD                     ; true
+
+INSERT_UPDATE Trigger; cronJob(code)[unique = true]; cronExpression   ; active
+                     ; OldBookRemoveJobPerfomable  ; 0 15 3 ? * 3,5,7 ; true
+

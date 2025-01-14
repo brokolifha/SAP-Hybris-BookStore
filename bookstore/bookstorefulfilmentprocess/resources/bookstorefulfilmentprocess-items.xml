@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+-->
+<items 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+			xsi:noNamespaceSchemaLocation="items.xsd">
+	
+	<itemtypes>
+			<itemtype code="ConsignmentProcess" autocreate="false" generate="false" >
+			<attributes>
+				<attribute qualifier="done" type="boolean">
+					<description>Mark process as done</description>
+					<modifiers optional="false" initial="false"/>
+					<persistence type="property" />
+					<defaultvalue>Boolean.FALSE</defaultvalue>					
+				</attribute>			
+				
+				<attribute qualifier="waitingForConsignment" type="boolean">
+					<description>Mark that process is waiting for consignment</description>
+					<modifiers optional="false" initial="false"/>
+					<persistence type="property" />
+					<defaultvalue>Boolean.FALSE</defaultvalue>					
+				</attribute>			
+				
+				<attribute qualifier="warehouseConsignmentState" type="WarehouseConsignmentState">
+					<description>State of warehouse process.</description>
+					<persistence type="property" />
+					<modifiers initial="false" optional="true" />
+				</attribute>
+					
+			</attributes>
+			</itemtype>
+
+
+
+
+			<itemtype code="BookReadProcess" autocreate="true" generate="true" extends="BusinessProcess">
+				<attributes>
+					<attribute qualifier="reader" type="Reader">
+						<persistence type="property"/>
+					</attribute>
+					<attribute qualifier="book" type="Book">
+						<persistence type="property"/>
+					</attribute>
+					
+					<attribute qualifier="bookCode" type="java.lang.String">
+						<persistence type="property"/>
+					</attribute>
+					<attribute qualifier="stock" type="java.lang.Boolean">
+						<persistence type="property"/>
+					</attribute>
+					<attribute qualifier="bookStatus" type="BookStatus">
+						<persistence type="property"/>
+					</attribute>
+				</attributes>
+			</itemtype>
+
+
+	</itemtypes>
+</items>

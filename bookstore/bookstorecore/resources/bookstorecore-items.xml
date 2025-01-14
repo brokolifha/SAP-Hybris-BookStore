@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+-->
+<items xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="items.xsd">
+
+    <collectiontypes>
+        <collectiontype code="GenderList" elementtype="Gender" autocreate="true" generate="true" type="list"/>
+        <collectiontype code="SwatchColorSet" elementtype="SwatchColorEnum" autocreate="true" generate="true"
+                        type="set"/>
+        <collectiontype code="ImageList" elementtype="Media" autocreate="true" generate="true" type="list"/>
+        <collectiontype code="PublisherList" elementtype="java.lang.String" autocreate="true" generate="true" type="list"/>
+    </collectiontypes>
+
+    <enumtypes>
+        <enumtype generate="true" code="SwatchColorEnum" autocreate="true" dynamic="true">
+            <value code="BLACK"/>
+            <value code="BLUE"/>
+            <value code="BROWN"/>
+            <value code="GREEN"/>
+            <value code="GREY"/>
+            <value code="ORANGE"/>
+            <value code="PINK"/>
+            <value code="PURPLE"/>
+            <value code="RED"/>
+            <value code="SILVER"/>
+            <value code="WHITE"/>
+            <value code="YELLOW"/>
+        </enumtype>
+        <enumtype code="BookCategories" autocreate="true" generate="true" dynamic="true">
+            <value code="Action"/>
+            <value code="Komedi"/>
+            <value code="Gerilim"/>
+            <value code="Macera"/>
+            <value code="Polisiye"/>
+            <value code="Yeni"/>
+        </enumtype>
+
+
+        <enumtype code="BookStatus" autocreate="true" generate="true" dynamic="true">
+            <value code="receivable"/>
+            <value code="cantReveivable"/>
+            <value code="inStock"/>
+            <value code="outStock"/>
+            <value code="returned"/>
+        </enumtype>
+
+
+
+    </enumtypes>
+
+    <relations>
+
+
+
+
+
+        <relation code="BookAndPublisherRelation" localized="false">
+            <sourceElement type="Book" qualifier="book" cardinality="many" collectiontype="list"/>
+            <targetElement type="Publisher" qualifier="publisher" cardinality="one"/>
+        </relation>
+        <relation code="WriterAndBookRelation" localized="false">
+            <deployment table="writerAndBookRelation" typecode="12006"/>
+            <sourceElement type="Book" qualifier="books" cardinality="many" collectiontype="list"/>
+            <targetElement type="Writer" qualifier="writers" cardinality="many" collectiontype="list"/>
+        </relation>
+        <relation code="BookandReaderRelation" localized="false">
+            <sourceElement type="Book"  qualifier="book" cardinality="many" collectiontype="list"/>
+            <targetElement type="Reader" qualifier="reader" cardinality="one"/>
+        </relation>
+        <relation code="BookTakingRelation" localized="false">
+            <sourceElement type="Book" qualifier="book" cardinality="one"/>
+            <targetElement type="TakinBookTime" qualifier="takingBook" cardinality="many" collectiontype="list"/>
+        </relation>
+        <relation code="ReaderTakingRelation" localized="false">
+            <sourceElement type="Reader" qualifier="reader" cardinality="one"/>
+            <targetElement type="TakinBookTime" qualifier="taking" cardinality="many" collectiontype="list"/>
+        </relation>
+        <relation code="BookAndBookCategoryRelation" localized="false">
+            <deployment table="BookAndCategories" typecode="12021"/>
+            <sourceElement type="Book" qualifier="book" cardinality="many" collectiontype="list"/>
+            <targetElement type="CategoryForNewBook"  qualifier="categories" cardinality="many" collectiontype="list"/>
+        </relation>
+        <relation code="ReaderAndWriterRelation" localized="false">
+            <deployment table="favWriter" typecode="12015"/>
+            <sourceElement type="Reader"  qualifier="reader" cardinality="many" collectiontype="list"/>
+            <targetElement type="Writer" qualifier="writer" cardinality="many" collectiontype="list"/>
+        </relation>
+
+        
+
+    </relations>
+
+    <itemtypes>
+
+        <!-- Add your item definitions here -->
+
+
+        <!-- TypeGroups are for structure of this file only -->
+
+        <typegroup name="Apparel">
+            <itemtype code="ApparelProduct" extends="Product"
+                      autocreate="true" generate="true"
+                      jaloclass="com.ecommint.bookstore.core.jalo.ApparelProduct">
+                <description>Base apparel product extension that contains additional attributes.</description>
+                <attributes>
+                    <attribute qualifier="genders" type="GenderList">
+                        <description>List of genders that the ApparelProduct is designed for</description>
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+
+            <itemtype code="ApparelStyleVariantProduct" extends="VariantProduct"
+                      autocreate="true" generate="true"
+                      jaloclass="com.ecommint.bookstore.core.jalo.ApparelStyleVariantProduct">
+                <description>Apparel style variant type that contains additional attribute describing variant style.
+                </description>
+                <attributes>
+                    <attribute qualifier="style" type="localized:java.lang.String"
+                               metatype="VariantAttributeDescriptor">
+                        <description>Color/Pattern of the product.</description>
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+
+                    <attribute qualifier="swatchColors" type="SwatchColorSet">
+                        <description>A normalized color mapping to a standardized front-end navigable name.
+                        </description>
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+
+            </itemtype>
+
+            <itemtype code="ApparelSizeVariantProduct" extends="ApparelStyleVariantProduct"
+                      autocreate="true" generate="true"
+                      jaloclass="com.ecommint.bookstore.core.jalo.ApparelSizeVariantProduct">
+                <description>Apparel size variant type that contains additional attribute describing variant size.
+                </description>
+                <attributes>
+                    <attribute qualifier="size" type="localized:java.lang.String"
+                               metatype="VariantAttributeDescriptor">
+                        <description>Size of the product.</description>
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+        </typegroup>
+
+        <typegroup name="Electronics">
+            <itemtype code="ElectronicsColorVariantProduct" extends="VariantProduct"
+                      autocreate="true" generate="true"
+                      jaloclass="com.ecommint.bookstore.core.jalo.ElectronicsColorVariantProduct">
+                <description>Electronics color variant type that contains additional attribute describing variant color.
+                </description>
+                <attributes>
+                    <attribute qualifier="color" type="localized:java.lang.String"
+                               metatype="VariantAttributeDescriptor">
+                        <description>Color of the product.</description>
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+        </typegroup>
+
+
+        <typegroup name="BookStore">
+            <itemtype code="Book" autocreate="true" generate="true">
+                <description>Kitaplar tablosu icin kullanilacak</description>
+                <deployment table="books" typecode="12001"/>
+                <attributes>
+                    <attribute qualifier="bookCode" type="java.lang.String">
+                        <modifiers write="true" read="true" unique="true"/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="name" type="java.lang.String">
+                        <modifiers write="true" read="true" initial="true" unique="false" optional="false"/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="date" type="java.util.Date">
+                        <modifiers read="true" write="false" initial="true" unique="false" optional="true"/>
+                        <persistence type="property"/>
+                    </attribute>
+
+                    <attribute qualifier="category" type="BookCategories">
+                        <persistence type="property"/>
+
+                    </attribute>
+                    <attribute qualifier="language" type="Language">
+                        <persistence type="property"/>
+
+                    </attribute>
+                    <attribute qualifier="imageList" type="ImageList">
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="selling" type="java.lang.Boolean">
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="sellingCounmt" type="java.lang.Integer">
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+            <itemtype code="Publisher" autocreate="true" generate="true">
+                <description>Yayin Evleri</description>
+                <deployment table="publisher" typecode="12002"/>
+                <attributes>
+                    <attribute qualifier="name" type="java.lang.String">
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+            <itemtype code="Writer" autocreate="true" generate="true">
+                <description>Yazarlar</description>
+                <deployment table="writer" typecode="12003"/>
+                <attributes>
+                    <attribute qualifier="writerCode" type="java.lang.String">
+                        <modifiers read="true" write="true" initial="true" unique="true" optional="true"/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="firstName" type="java.lang.String">
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="lastName" type="java.lang.String">
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="fullName" type="java.lang.String">
+                        <persistence type="dynamic" attributeHandler="writeFullNameHandler"/>
+                        <modifiers read="true" write="false"/>
+                    </attribute>
+                    <attribute qualifier="publishers" type="PublisherList">
+                        <persistence type="dynamic" attributeHandler="publisherListHandler"/>
+                        <modifiers read="true" write="false"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+            <itemtype code="Product" autocreate="false"  generate="false">
+                <attributes>
+                    <attribute qualifier="publisher" type="Publisher">
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+            <itemtype code="StoryBook" autocreate="true" generate="true" extends="Book">
+                <attributes>
+                    <attribute qualifier="story" type="java.lang.String">
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+            <itemtype code="NewBook" autocreate="true" generate="true" extends="Book">
+                <attributes>
+                    <attribute qualifier="newBookDescription" type="java.lang.String">
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+            <itemtype code="Reader" autocreate="true" generate="true">
+                <deployment table="bookReader" typecode="12009"/>
+                <attributes>
+                    <attribute qualifier="readerCode" type="java.lang.String">
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="firstName" type="java.lang.String">
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="lastName" type="java.lang.String">
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="email" type="java.lang.String">
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="notification" type="java.lang.String">
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+            <itemtype code="TakinBookTime" autocreate="true" generate="true">
+                <deployment table="takingBook" typecode="12010"/>
+                <attributes>
+                    <attribute qualifier="takingDate" type="java.util.Date">
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="returningDate" type="java.util.Date">
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="book" type="Book">
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+            <itemtype code="ReadingBook" autocreate="true" generate="true">
+                <deployment table="readingBook" typecode="12012"/>
+                <attributes>
+                    <attribute qualifier="reader" type="Reader">
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="book" type="Book">
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="takingDate" type="java.util.Date">
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="returningDate" type="java.util.Date">
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="reading" type="java.lang.Boolean">
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+
+
+
+            <itemtype code="CategoryForNewBook" autocreate="true" generate="true">
+                <deployment table="CategoryForNewBook" typecode="12020"/>
+                <attributes>
+                    <attribute qualifier="categoryName" type="BookCategories">
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+
+            <itemtype code="RemoveOldBookCj" extends="CronJob"></itemtype>
+
+
+
+
+
+        </typegroup>
+
+
+    </itemtypes>
+</items>

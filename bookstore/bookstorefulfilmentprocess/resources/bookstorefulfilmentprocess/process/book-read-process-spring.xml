@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="checkBookReadAction" class="com.ecommint.bookstore.fulfilmentprocess.actions.bookRead.CheckBookReadAction"/>
+    <bean id="approveBookAction" class="com.ecommint.bookstore.fulfilmentprocess.actions.bookRead.ApproveBookAction"/>
+    <bean id="cancelBookAction" class="com.ecommint.bookstore.fulfilmentprocess.actions.bookRead.CancelBookAction"/>
+    <bean id="bookStockAction" class="com.ecommint.bookstore.fulfilmentprocess.actions.bookRead.BookStockAction"/>
+    <bean id="bookReadebleActio" class="com.ecommint.bookstore.fulfilmentprocess.actions.bookRead.BookReadebleAction"/>
+
+
+
+
+</beans>

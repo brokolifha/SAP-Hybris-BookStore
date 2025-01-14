@@ -1,0 +1,29 @@
+<process xmlns="http://www.hybris.de/xsd/processdefinition" name="book-read-process" start="checkBookRead"
+         processClass="com.ecommint.bookstore.fulfilmentprocess.model.BookReadProcessModel">
+
+    <action id="checkBookRead" bean="checkBookReadAction">
+        <transition name="OK" to="success"/>
+        <transition name="NOK" to="error"/>
+
+    </action>
+    
+    <wait id="waitForBookRead" prependProcessCode="true" then="error">
+        <case event="ConfirmOrCancelBookReadEvent">
+            <choice id="approveBook" then="approveBook"/>
+            <choice id="cancelBook" then="cancelBook"/>
+        </case>
+    </wait>
+
+    <action id="approveBook" bean="approveBookAction">
+        <transition name="OK" to="success"/>
+    </action>
+
+    <action id="cancelBook" bean="cancelBookAction">
+        <transition name="OK" to="failed"/>
+    </action>
+
+
+    <end id="success" state="SUCCEEDED">Process Completed</end>
+    <end id="failed" state="FAILED">Process Failed</end>
+    <end id="error" state="ERROR">Process Error</end>
+</process>

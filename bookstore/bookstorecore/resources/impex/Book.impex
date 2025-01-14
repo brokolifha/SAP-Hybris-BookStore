@@ -1,0 +1,112 @@
+#Local.properties içinde ki değerleri alıp impeximizin içnde kullanabilmemizi sağlar, default impex oluşturulunca gelir.
+UPDATE GenericItem[processor = de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor]; pk[unique = true]
+
+#Sadece yeni bir item oluşturmamızı sağlar
+INSERT
+
+#Var olan itemi güncellememizi sağlar
+UPDATE
+#Var olan itemi silmemizi sağlar
+REMOVE
+
+#Eğer item yoksa oluşturur varsa değerlerini günceller.!(Genelde kullanılan keyword INSERT_UPDATE'dir)
+INSERT_UPDATE
+
+
+#Insert işlemlerinde veri eklerken uniqe bir değer belirtmek zorundayız.! Burada name değerini uniqe belirttik!
+INSERT Book; name[unique = true]; date[dateformat = dd.MM.yyyy]; selling; sellingCount
+           ; Suç ve Ceza        ; 10.07.1995                   ; true   ; 10
+
+
+#Silme işleminde sadece uniqe değerini vermemzi yeterli oluyor.
+REMOVE Book; name[unique = true]
+           ; Suç ve Ceza
+
+
+#batchmode = true işlemi bununla alakalı ne kadar değer varsa hepsini silmemizi sağlar.
+#Yani name'i suç ve ceza olan bütün değerler diğer şartlar göz ardı edilerek silinir.
+REMOVE Book[batchmode = true]; name[unique = true]
+                             ; Suç ve Ceza
+
+
+INSERT_UPDATE Book; name[unique = true]        ; date[dateformat = dd.MM.yyyy]; selling; sellingCount; category(code)
+                  ; 4 Gün 3 Gece               ; 10.10.2023                   ; true   ; 100         ; Action
+                  ; Kaplanın Sırtında          ; 11.10.2023                   ; true   ; 120         ; Komedi
+                  ; İnsanlığımı Yitirirken     ; 12.10.2023                   ; true   ; 130         ; Gerilim
+                  ; Geceyarısı Kütüphanesi     ; 13.03.2024                   ; true   ; 190         ; Macera
+                  ; Labirent                   ; 10.06.2024                   ; true   ; 220         ; Gerilim
+                  ; Salkım Sokak No:13         ; 15.07.2023                   ; true   ; 110         ; Action
+                  ; Hayatın Anlamı             ; 12.11.2022                   ; true   ; 340         ; Polisiye
+                  ; Zamanı Durdurmanın Yolları ; 30.02.2024                   ; true   ; 220         ; Komedi
+
+UPDATE Book; name[unique = true]        ; language(isocode)
+           ; 4 Gün 3 Gece               ; en
+           ; Kaplanın Sırtında          ; de
+           ; İnsanlığımı Yitirirken     ; es
+           ; Geceyarısı Kütüphanesi     ; fr
+           ; Labirent                   ; es
+           ; Salkım Sokak No:13         ; en
+           ; Hayatın Anlamı             ; de
+           ; Zamanı Durdurmanın Yolları ; fr
+
+
+
+INSERT_UPDATE Publisher; name[unique=true]
+;İş Bankası Yayınları
+;Olimpos Yayınları
+;Hasret Yayınları
+; Ziraat Bankası Yayınları
+; Can Yayınları
+
+
+INSERT_UPDATE  Book; name[unique = true]        ; bookCode[unique]; publisher(name)
+#           ; 4 Gün 3 Gece               ; 2               ; İş Bankası Yayınları
+           ; Kaplanın Sırtında          ; 3               ; Olimpos Yayınları
+           ; İnsanlığımı Yitirirken     ; 4               ; Hasret Yayınları
+           ; Geceyarısı Kütüphanesi     ; 5               ; Ziraat Bankası Yayınları
+           ; Labirent                   ; 6               ; Can Yayınları
+           ; Salkım Sokak No:13         ; 7               ; Ziraat Bankası Yayınları
+           ; Hayatın Anlamı             ; 8               ; Hasret Yayınları
+           ; Zamanı Durdurmanın Yolları ; 9               ; İş Bankası Yayınları
+
+INSERT_UPDATE WriterAndBookRelation; source(name)[unique = true]; target(firstName)
+                                   ; 4 Gün 3 Gece               ; Esma
+                                   ; Kaplanın Sırtında          ; Serhat
+                                   ; İnsanlığımı Yitirirken     ; Said Faik
+                                   ; Geceyarısı Kütüphanesi     ; Mehmet
+                                   ; Labirent                   ; Ali
+                                   ; Salkım Sokak No:13         ; Yiğit
+                                   ; Hayatın Anlamı             ; Barış
+                                   ; Zamanı Durdurmanın Yolları ; Barış
+                                   ; 4 Gün 3 Gece               ; Barış
+                                   ; Kaplanın Sırtında          ; Mehmet
+                                   ; İnsanlığımı Yitirirken     ; Mehmet
+                                   ; Geceyarısı Kütüphanesi     ; Serhat
+                                   ; Labirent                   ; Esma
+
+
+#Default veri girişi kullanımı
+
+INSERT_UPDATE Book; name[unique = true]        ; date[dateformat = dd.MM.yyyy]; selling[default = true]; sellingCount[default = 200]; category(code)
+                  ; 4 Gün 3 Gece               ; 10.10.2023                   ; true                   ;                            ; Action
+                  ; Kaplanın Sırtında          ; 11.10.2023                   ;                        ;                            ; Komedi
+                  ; İnsanlığımı Yitirirken     ; 12.10.2023                   ;                        ;                            ; Gerilim
+                  ; Geceyarısı Kütüphanesi     ; 13.03.2024                   ;                        ;                            ; Macera
+                  ; Labirent                   ; 10.06.2024                   ;                        ;                            ; Gerilim
+                  ; Salkım Sokak No:13         ; 15.07.2023                   ;                        ;                            ; Action
+                  ; Hayatın Anlamı             ; 12.11.2022                   ;                        ;                            ; Polisiye
+                  ; Zamanı Durdurmanın Yolları ; 30.02.2024                   ;                        ;                            ; Komedi
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,11 @@
+UPDATE GenericItem[processor = de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor]; pk[unique = true]
+
+INSERT_UPDATE Publisher;name[unique=true]
+;İş Bankası Yayınları
+;Olimpos Yayınları
+;Can Yayınları
+;Hasret Yayınları
+;Ziraat Bankası Yayınları
+
+
+

@@ -1,0 +1,8 @@
+UPDATE GenericItem[processor = de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor]; pk[unique = true]
+
+INSERT_UPDATE Writer;firstName[unique=true];lastName[unique=true];writerCode[unique=true]
+;Ali;Can;3
+;Mehmet;Akif;4
+;Said Faik;Abasıyanık;5
+;Serhat;Kasap;6
+;Esma;Siraz;7
