@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at Nov 29, 2024, 11:12:14 PM                   ---
+ * --- Generated at 30 Oca 2025 18:15:14                        ---
  * ----------------------------------------------------------------
  */
 package com.ecommint.bookstore.core.jalo;
@@ -53,8 +53,8 @@ public abstract class GeneratedBook extends GenericItem
 	public static final String IMAGELIST = "imageList";
 	/** Qualifier of the <code>Book.selling</code> attribute **/
 	public static final String SELLING = "selling";
-	/** Qualifier of the <code>Book.sellingCounmt</code> attribute **/
-	public static final String SELLINGCOUNMT = "sellingCounmt";
+	/** Qualifier of the <code>Book.sellingCount</code> attribute **/
+	public static final String SELLINGCOUNT = "sellingCount";
 	/** Qualifier of the <code>Book.publisher</code> attribute **/
 	public static final String PUBLISHER = "publisher";
 	/** Qualifier of the <code>Book.writers</code> attribute **/
@@ -122,7 +122,7 @@ public abstract class GeneratedBook extends GenericItem
 		tmp.put(LANGUAGE, AttributeMode.INITIAL);
 		tmp.put(IMAGELIST, AttributeMode.INITIAL);
 		tmp.put(SELLING, AttributeMode.INITIAL);
-		tmp.put(SELLINGCOUNMT, AttributeMode.INITIAL);
+		tmp.put(SELLINGCOUNT, AttributeMode.INITIAL);
 		tmp.put(PUBLISHER, AttributeMode.INITIAL);
 		tmp.put(READER, AttributeMode.INITIAL);
 		DEFAULT_INITIAL_ATTRIBUTES = Collections.unmodifiableMap(tmp);
@@ -657,76 +657,76 @@ public abstract class GeneratedBook extends GenericItem
 	}
 	
 	/**
-	 * <i>Generated method</i> - Getter of the <code>Book.sellingCounmt</code> attribute.
-	 * @return the sellingCounmt
+	 * <i>Generated method</i> - Getter of the <code>Book.sellingCount</code> attribute.
+	 * @return the sellingCount
 	 */
-	public Integer getSellingCounmt(final SessionContext ctx)
+	public Integer getSellingCount(final SessionContext ctx)
 	{
-		return (Integer)getProperty( ctx, SELLINGCOUNMT);
+		return (Integer)getProperty( ctx, SELLINGCOUNT);
 	}
 	
 	/**
-	 * <i>Generated method</i> - Getter of the <code>Book.sellingCounmt</code> attribute.
-	 * @return the sellingCounmt
+	 * <i>Generated method</i> - Getter of the <code>Book.sellingCount</code> attribute.
+	 * @return the sellingCount
 	 */
-	public Integer getSellingCounmt()
+	public Integer getSellingCount()
 	{
-		return getSellingCounmt( getSession().getSessionContext() );
+		return getSellingCount( getSession().getSessionContext() );
 	}
 	
 	/**
-	 * <i>Generated method</i> - Getter of the <code>Book.sellingCounmt</code> attribute. 
-	 * @return the sellingCounmt
+	 * <i>Generated method</i> - Getter of the <code>Book.sellingCount</code> attribute. 
+	 * @return the sellingCount
 	 */
-	public int getSellingCounmtAsPrimitive(final SessionContext ctx)
+	public int getSellingCountAsPrimitive(final SessionContext ctx)
 	{
-		Integer value = getSellingCounmt( ctx );
+		Integer value = getSellingCount( ctx );
 		return value != null ? value.intValue() : 0;
 	}
 	
 	/**
-	 * <i>Generated method</i> - Getter of the <code>Book.sellingCounmt</code> attribute. 
-	 * @return the sellingCounmt
+	 * <i>Generated method</i> - Getter of the <code>Book.sellingCount</code> attribute. 
+	 * @return the sellingCount
 	 */
-	public int getSellingCounmtAsPrimitive()
+	public int getSellingCountAsPrimitive()
 	{
-		return getSellingCounmtAsPrimitive( getSession().getSessionContext() );
+		return getSellingCountAsPrimitive( getSession().getSessionContext() );
 	}
 	
 	/**
-	 * <i>Generated method</i> - Setter of the <code>Book.sellingCounmt</code> attribute. 
-	 * @param value the sellingCounmt
+	 * <i>Generated method</i> - Setter of the <code>Book.sellingCount</code> attribute. 
+	 * @param value the sellingCount
 	 */
-	public void setSellingCounmt(final SessionContext ctx, final Integer value)
+	public void setSellingCount(final SessionContext ctx, final Integer value)
 	{
-		setProperty(ctx, SELLINGCOUNMT,value);
+		setProperty(ctx, SELLINGCOUNT,value);
 	}
 	
 	/**
-	 * <i>Generated method</i> - Setter of the <code>Book.sellingCounmt</code> attribute. 
-	 * @param value the sellingCounmt
+	 * <i>Generated method</i> - Setter of the <code>Book.sellingCount</code> attribute. 
+	 * @param value the sellingCount
 	 */
-	public void setSellingCounmt(final Integer value)
+	public void setSellingCount(final Integer value)
 	{
-		setSellingCounmt( getSession().getSessionContext(), value );
+		setSellingCount( getSession().getSessionContext(), value );
 	}
 	
 	/**
-	 * <i>Generated method</i> - Setter of the <code>Book.sellingCounmt</code> attribute. 
-	 * @param value the sellingCounmt
+	 * <i>Generated method</i> - Setter of the <code>Book.sellingCount</code> attribute. 
+	 * @param value the sellingCount
 	 */
-	public void setSellingCounmt(final SessionContext ctx, final int value)
+	public void setSellingCount(final SessionContext ctx, final int value)
 	{
-		setSellingCounmt( ctx,Integer.valueOf( value ) );
+		setSellingCount( ctx,Integer.valueOf( value ) );
 	}
 	
 	/**
-	 * <i>Generated method</i> - Setter of the <code>Book.sellingCounmt</code> attribute. 
-	 * @param value the sellingCounmt
+	 * <i>Generated method</i> - Setter of the <code>Book.sellingCount</code> attribute. 
+	 * @param value the sellingCount
 	 */
-	public void setSellingCounmt(final int value)
+	public void setSellingCount(final int value)
 	{
-		setSellingCounmt( getSession().getSessionContext(), value );
+		setSellingCount( getSession().getSessionContext(), value );
 	}
 	
 	/**

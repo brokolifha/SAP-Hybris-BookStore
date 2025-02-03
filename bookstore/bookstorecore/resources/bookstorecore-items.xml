@@ -201,7 +201,7 @@
                     <attribute qualifier="selling" type="java.lang.Boolean">
                         <persistence type="property"/>
                     </attribute>
-                    <attribute qualifier="sellingCounmt" type="java.lang.Integer">
+                    <attribute qualifier="sellingCount" type="java.lang.Integer">
                         <persistence type="property"/>
                     </attribute>
                 </attributes>

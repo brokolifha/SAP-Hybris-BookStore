@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at Nov 29, 2024, 11:12:14 PM                   ---
+ * --- Generated at 30 Oca 2025 18:15:14                        ---
  * ----------------------------------------------------------------
  */
 package com.ecommint.bookstore.core.constants;
